@@ -5,14 +5,15 @@ import { Transport } from '@nestjs/microservices/enums';
 import { AppModule } from './app.module';
 
 const logger = new Logger('main');
+
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
     AppModule,
     {
-      transport: Transport.TCP,
+      transport: Transport.REDIS,
       options: {
-        host: '127.0.0.1',
-        port: 8998,
+        host: 'localhost',
+        port: 6379,
       },
     },
   );
